@@ -1,0 +1,387 @@
+<!DOCTYPE html>  
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Garvita! ✨</title>
+    <!-- Google Fonts लोड किए गए हैं गानों के अलग-अलग Fonts के लिए -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lobster&family=Caveat:wght@700&family=Rozha+One&family=Cinzel:wght@700&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Setup */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            position: relative;
+            transition: background 1s ease;
+        }
+
+        /* 👑 NEW LUXURY & VIBRANT CELEBRATION BACKGROUND FOR PAGE 1 */
+        body.page1-theme { 
+            background: linear-gradient(135deg, #ff007f, #ff758c, #ffaa00, #fe5f75); 
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite, breatheBg 12s ease-in-out infinite alternate; 
+            box-shadow: inset 0 0 100px rgba(0,0,0,0.2);
+        }
+        body.page2-theme { background: linear-gradient(135deg, #2b1055, #591a75, #75225b, #11052c); background-size: 400% 400%; animation: gradientAnimation 12s ease infinite; }
+        body.page3-theme { background: linear-gradient(-45deg, #355C7D, #6C5B7B, #C06C84, #F67280); background-size: 400% 400%; animation: gradientAnimation 12s ease infinite; }
+        body.page4-theme { background: linear-gradient(rgba(10, 25, 15, 0.4), rgba(0, 0, 0, 0.65)), url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; }
+        body.page5-theme { background: linear-gradient(rgba(15, 10, 25, 0.55), rgba(0, 0, 0, 0.88)), url('https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; }
+        
+        body.page6-theme { 
+            background: linear-gradient(to bottom, rgba(5, 15, 35, 0.85), rgba(0, 0, 0, 0.95)), 
+                        url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=1920&q=80'); 
+            background-size: cover; 
+            background-position: center; 
+            animation: breatheBg 8s infinite alternate;
+        }
+
+        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes breatheBg { 0% { transform: scale(1); } 100% { transform: scale(1.04); } }
+
+        h1 { color: white; text-shadow: 3px 5px 15px rgba(0,0,0,0.5); font-size: 2.1rem; margin-bottom: 5px; z-index: 20; text-align: center; font-weight: bold; }
+
+        /* Capsule Container */
+        .capsule-container { z-index: 25; max-width: 85%; margin-bottom: 10px; text-align: center; min-height: 90px; display: flex; justify-content: center; align-items: center; }
+        .capsule { background: rgba(255, 255, 255, 0.95); padding: 12px 20px; border-radius: 25px; font-size: 0.95rem; font-weight: 600; line-height: 1.4; box-shadow: 0 10px 25px rgba(0,0,0,0.3); display: none; animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+        .capsule.p1-color { color: #d11074; border: 2px solid #ff69b4; font-family: 'Fredoka One', cursive; }
+        .capsule.p2-color { color: #591a75; border: 2px solid #ff00ff; font-family: 'Lobster', cursive; font-size: 1.05rem; }
+        .capsule.p3-color { color: #5c1a3b; border: 2px solid #F67280; font-family: 'Caveat', cursive; font-size: 1.3rem; }
+        .capsule.p4-color { color: #114224; border: 2px solid #38ef7d; font-family: 'Rozha One', serif; }
+        .capsule.p5-color { color: #563312; border: 2px solid #ffaa00; font-family: 'Poppins', sans-serif; font-style: italic; }
+        .capsule.p6-color { color: #00c6ff; border: 2px solid #0072ff; box-shadow: 0 0 15px rgba(0, 198, 255, 0.4); font-family: 'Cinzel', serif; font-size: 0.85rem; }
+
+        /* Photo & Video Frames */
+        .photo-frame-wrapper { position: relative; padding: 12px; border-radius: 25px; box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.6); z-index: 15; cursor: pointer; display: none; }
+
+        .frame-p1 { background: linear-gradient(45deg, #ff007f, #ffea00, #00e5ff, #ff007f); background-size: 400% 400%; animation: borderGlow 6s ease infinite, entryZoom 1s ease forwards; }
+        .frame-p2 { background: linear-gradient(45deg, #ff00ff, #00ffff, #ffea00, #ff00ff); background-size: 400% 400%; animation: borderGlow 4s linear infinite, entryFlip 1.2s ease-out forwards; }
+        .frame-p3 { background: linear-gradient(45deg, #F8B195, #F67280, #C06C84, #6C5B7B); background-size: 400% 400%; animation: borderGlow 5s ease-in-out infinite, entryZoom 1.2s ease forwards; }
+        .frame-p4 { background: linear-gradient(45deg, #11998e, #38ef7d, #ffe259, #11998e); background-size: 400% 400%; border-radius: 160px 160px 25px 25px; padding: 10px; animation: borderGlow 4s linear infinite, entryZoom 1.2s ease forwards; }
+        .frame-p5 { background: linear-gradient(45deg, #ffaa00, #ff007f, #00ffff, #ffaa00); background-size: 400% 400%; border-radius: 20px; padding: 12px; animation: borderGlow 5s linear infinite, entryZoom 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        
+        .frame-p6 { 
+            background: linear-gradient(45deg, #00c6ff, #0072ff, #7f00ff, #00c6ff); 
+            background-size: 400% 400%; 
+            border-radius: 20px; 
+            padding: 8px; 
+            box-shadow: 0 0 30px rgba(0, 198, 255, 0.6);
+            animation: borderGlow 4s linear infinite, entryZoom 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; 
+        }
+
+        .photo-container { width: 270px; height: 360px; border-radius: 15px; overflow: hidden; position: relative; background-color: #fff; }
+        .photo-container img, .photo-container video { width: 100%; height: 100%; object-fit: cover; }
+        
+        .frame-p4 .photo-container { height: 370px; border-radius: 150px 150px 15px 15px; animation: elegantFloat 5s ease-in-out infinite; }
+        .frame-p3 .photo-container { animation: floatPhoto 4.5s ease-in-out infinite; }
+        .frame-p5 .photo-container { width: 350px; height: 260px; border-radius: 14px; animation: elegantFloat 5.5s ease-in-out infinite; }
+        .frame-p5 .photo-container img { object-fit: contain; background: #000; }
+        
+        .frame-p6 .photo-container { width: 270px; height: 390px; border-radius: 12px; animation: elegantFloat 5s ease-in-out infinite; background: #000; }
+
+        @keyframes floatPhoto { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+        @keyframes elegantFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+
+        /* Reveal Modals */
+        .flower-reveal-container { display: none; flex-direction: column; justify-content: center; align-items: center; z-index: 20; cursor: pointer; animation: slideUp 0.8s ease forwards; }
+        .magical-flower { font-size: 5.5rem; animation: pulseFlower 1.8s infinite ease-in-out; filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.8)); }
+        .magical-emoji-p5 { font-size: 5.8rem; animation: pulseFlower 1.4s infinite ease-in-out; filter: drop-shadow(0 0 25px rgba(255, 170, 0, 0.9)); }
+        
+        .magical-box-p6 { font-size: 5.5rem; animation: pulseFlower 1.5s infinite ease-in-out; filter: drop-shadow(0 0 25px #00c6ff); margin-bottom: 10px; }
+
+        .flower-click-text { color: white; margin-top: 15px; font-size: 1.1rem; font-weight: bold; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); background: rgba(0, 0, 0, 0.5); padding: 8px 18px; border-radius: 20px; animation: pulse 1.5s infinite; text-align: center; }
+        @keyframes pulseFlower { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+        .click-badge { position: absolute; bottom: 15px; right: 15px; background: #fff; padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.3); animation: pulse 1.5s infinite; }
+        .badge-p1 { color: #ff1493; } .badge-p2 { color: #591a75; } .badge-p3 { color: #C06C84; }
+
+        /* Bottom Captions */
+        .bottom-caption-container { display: none; z-index: 25; margin-top: 15px; max-width: 90%; text-align: center; animation: slideUp 0.8s ease forwards; }
+        .bottom-caption-text { font-size: 1.2rem; font-weight: bold; padding: 10px 20px; border-radius: 15px; text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7); }
+        
+        /* 🎨 PAGE 1 CAPTION - Fun & Playful */
+        .caption-p1-style { font-family: 'Fredoka One', cursive; color: #ffffff; background: rgba(255, 20, 147, 0.65); border: 2px dashed #fff; box-shadow: 0 8px 20px rgba(255, 20, 147, 0.4); font-size: 1.3rem; }
+        /* 🎨 PAGE 2 CAPTION - Retro Bollywood Drama */
+        .caption-p2-style { font-family: 'Lobster', cursive; color: #ffff00; background: rgba(89, 26, 117, 0.75); border-left: 5px solid #ff00ff; border-right: 5px solid #00ffff; font-size: 1.4rem; }
+        /* 🎨 PAGE 3 CAPTION - Pure Emotional Handwritten Vibe */
+        .caption-p3-style { font-family: 'Caveat', cursive; color: #fff; font-size: 1.8rem; border-bottom: 3px double #F67280; background: rgba(192, 108, 132, 0.4); backdrop-filter: blur(8px); }
+        /* 🎨 PAGE 4 CAPTION - Royal Bold Traditional Hindi */
+        .caption-p4-style { font-family: 'Rozha One', serif; color: #e6fff0; border-left: 4px solid #38ef7d; border-right: 4px solid #ffe259; background: rgba(12, 38, 23, 0.85); font-size: 1.25rem; line-height: 1.6; }
+        /* 🎨 PAGE 5 CAPTION - Premium Modern Aesthetic */
+        .caption-p5-style { font-family: 'Poppins', sans-serif; font-weight: 800 !important; background: linear-gradient(135deg, rgba(255, 170, 0, 0.3), rgba(255, 0, 127, 0.3)) !important; border: 2px solid rgba(255, 215, 0, 0.6) !important; backdrop-filter: blur(20px) !important; font-size: 1.15rem !important; padding: 14px 24px !important; border-radius: 20px !important; color: #fff; }
+
+        /* 🎨 PAGE 6 CAPTION - Grand Cinematic Universe */
+        .caption-p6-style {
+            font-family: 'Cinzel', serif;
+            background: rgba(10, 15, 35, 0.85) !important;
+            border: 1.5px solid rgba(0, 198, 255, 0.7) !important;
+            backdrop-filter: blur(15px) !important;
+            color: #ffffff !important;
+            font-size: 0.98rem !important;
+            font-weight: 600 !important;
+            padding: 18px 24px !important;
+            border-radius: 18px !important;
+            line-height: 1.8 !important;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.9) !important;
+            box-shadow: 0 12px 35px rgba(0, 114, 255, 0.5);
+            text-align: center;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        /* 🎵 LYRICS FLOATING SYSTEM WITH DYNAMIC PER-PAGE FONTS 🎵 */
+        .lyrics-bg-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none; overflow: hidden; }
+        .floating-caption { position: absolute; bottom: -100px; width: 90%; text-align: center; font-size: 1.8rem; font-weight: 800; animation: moveUpLyricStraight 9s linear forwards; }
+        
+        /* Specific fonts assigned based on page classes via JavaScript */
+        .lyric-f-p1 { font-family: 'Fredoka One', cursive; color: #fff; text-shadow: 0 0 10px rgba(255, 20, 147, 0.9), 2px 3px 6px #000; }
+        .lyric-f-p2 { font-family: 'Lobster', cursive; color: #ffff00; text-shadow: 0 0 12px rgba(89, 26, 117, 0.9), 2px 3px 6px #000; font-size: 2.1rem; }
+        .lyric-f-p3 { font-family: 'Caveat', cursive; color: #fff; text-shadow: 0 0 10px rgba(192, 108, 132, 0.9), 2px 2px 4px #000; font-size: 2.5rem; }
+        .lyric-f-p4 { font-family: 'Rozha One', serif; color: #e6fff0; text-shadow: 0 0 15px rgba(17, 153, 142, 0.9), 2px 3px 5px #000; font-size: 1.9rem; }
+        .lyric-f-p5 { font-family: 'Poppins', sans-serif; font-weight: 800 !important; font-size: 2.3rem !important; text-shadow: 0 0 10px #fff, 0 0 20px rgba(255, 170, 0, 0.8), 3px 4px 8px #000 !important; }
+
+        /* Clean Cosmic Sparkles for Page 6 */
+        .p6-floating-sparkle { position: absolute; font-size: 1.8rem; animation: floatUpCosmic 5s linear forwards; bottom: -50px; opacity: 0.7; z-index: 2; filter: drop-shadow(0 0 8px rgba(0, 198, 255, 0.5)); }
+        .emoji { position: absolute; font-size: 2.5rem; animation: floatEmoji 5s ease-in-out infinite; bottom: -60px; opacity: 0.75; z-index: 2; }
+
+        /* Controls */
+        .btn-container { margin-top: 15px; z-index: 30; display: flex; gap: 15px; }
+        .nav-btn { background: #ffffff; color: #ff1493; border: none; padding: 10px 25px; font-size: 1rem; font-weight: bold; border-radius: 30px; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: none; transition: all 0.3s ease; }
+        .nav-btn:hover { background: #ffea00; color: #000; transform: translateY(-3px); }
+        .btn-p1 { color: #ff1493 !important; font-family: 'Fredoka One', cursive; }
+        .btn-p2 { color: #591a75 !important; font-family: 'Lobster', cursive; } .btn-p2:hover { background: #00ffff !important; color: #000 !important; }
+        .btn-p3 { color: #C06C84 !important; font-family: 'Caveat', cursive; font-size: 1.2rem; } .btn-p3:hover { background: #F8B195 !important; color: #000 !important; }
+        .btn-p4 { color: #11998e !important; font-family: 'Rozha One', serif; } .btn-p4:hover { background: #ffe259 !important; color: #000 !important; }
+        .btn-p5 { color: #ffaa00 !important; } .btn-p5:hover { background: #ff007f !important; color: #fff !important; }
+        .btn-p6 { color: #0072ff !important; border: 1px solid #00c6ff !important; font-family: 'Cinzel', serif; } .btn-p6:hover { background: #00c6ff !important; color: #fff !important; box-shadow: 0 0 15px #00c6ff; }
+
+        @keyframes borderGlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes entryZoom { 0% { transform: scale(0.4); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        @keyframes entryFlip { 0% { transform: scale(0.5) rotateY(-90deg); opacity: 0; } 100% { transform: scale(1) rotateY(0deg); opacity: 1; } }
+        @keyframes moveUpLyricStraight { 0% { transform: translateY(0); opacity: 0; } 12% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateY(-115vh); opacity: 0; } }
+        @keyframes floatEmoji { 0% { transform: translateY(0) translateX(0) scale(0.5); opacity: 0; } 20% { opacity: 0.9; transform: scale(1); } 100% { transform: translateY(-110vh) translateX(40px); opacity: 0; } }
+        @keyframes floatUpCosmic { 0% { transform: translateY(0) scale(0.6); opacity: 0; } 15% { opacity: 1; transform: scale(1); } 100% { transform: translateY(-110vh) translateX(20px) rotate(10deg); opacity: 0; } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        @keyframes slideUp { from { transform: translateY(25px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body class="page1-theme" id="main-body">
+
+    <!-- Audio System -->
+    <audio id="music-page1" src="bachpan_song.mp3" loop></audio>
+    <audio id="music-page2" src="college_song.mp3" loop></audio>
+    <audio id="music-page3" src="sang_rahiyo.mp3" loop></audio> 
+    <audio id="music-page4" src="ye_tasveer_hai.mp3" loop></audio>
+    <audio id="music-page5" src="haaniyaan.mp3" loop></audio>
+    <audio id="music-page6" src="tera_yaar_hoon_main.mp3" loop></audio>
+
+    <!-- Title Header -->
+    <h1 id="main-title">Garvita Ka Bachpan 👶✨</h1>
+
+    <!-- Top Info Capsules -->
+    <div class="capsule-container">
+        <div class="capsule p1-color" id="capsule-p1">🚨 <b>WARNING:</b> Bachpan mein ye utni hi badi shararat ki dukaan thi!</div>
+        <div class="capsule p2-color" id="capsule-p2">✨ <b>Fun Fact:</b> Sharafat ka naqab pehna hai, par andar se full drama!</div>
+        <div class="capsule p3-color" id="capsule-p3">🌟 <b>Safar aur Saathi:</b> Aage peeche nahi, bas hamesha SANG rahiyo!</div>
+        <div class="capsule p4-color" id="capsule-p4">🌿 <b>The Perfect Vibe:</b> इस तस्वीर में जो सुकून है, वही इनकी सबसे बड़ी खूबी है।</div>
+        <div class="capsule p5-color" id="capsule-p5">☕ <b>Our Favorite Ritual:</b> Nothing beats a warm conversation with you!</div>
+        <div class="capsule p6-color" id="capsule-p6">🤝 <b>The Ultimate Bond:</b> Best friends don't let you stay quiet for long!</div>
+    </div>
+
+    <!-- PAGE 1 PHOTO & CAPTION -->
+    <div class="photo-frame-wrapper frame-p1" id="frame-page1" onclick="playPage1Effects()" style="display: block;">
+        <div class="photo-container"><img src="baby.jpg" alt="Childhood"><div class="click-badge badge-p1" id="badge-p1">Click Me! 💖</div></div>
+    </div>
+    <div class="bottom-caption-container" id="bottom-caption-box-p1"><div class="bottom-caption-text caption-p1-style">"छोटा पैकेट, बड़ा धमाका! बचपन के वो दिन भी क्या दिन थे... 🧸🍭"</div></div>
+
+    <!-- PAGE 2 PHOTO -->
+    <div class="photo-frame-wrapper frame-p2" id="frame-page2" onclick="playPage2Effects()">
+        <div class="photo-container"><img src="IMG-20240308-WA0054_2.jpg" alt="Traditional"><div class="click-badge badge-p2" id="badge-p2">Click Me! 🎶</div></div>
+    </div>
+
+    <!-- PAGE 3 PHOTO -->
+    <div class="photo-frame-wrapper frame-p3" id="frame-page3" onclick="playPage3Effects()">
+        <div class="photo-container"><img src="IMG-20240317-WA0008_6..jpg" alt="Best Duo"><div class="click-badge badge-p3" id="badge-p3">Click Me! 🌟</div></div>
+    </div>
+
+    <!-- PAGE 4 REVEAL & PHOTO -->
+    <div id="flower-container-p4" class="flower-reveal-container" onclick="revealPage4Photo()">
+        <div class="magical-flower">🌸</div><div class="flower-click-text">इस जादुई फूल पर क्लिक करें... ✨</div>
+    </div>
+    <div class="photo-frame-wrapper frame-p4" id="frame-page4">
+        <div class="photo-container"><img src="IMG-20240614-WA0019.jpg" alt="Nature Vibe"></div>
+    </div>
+
+    <!-- PAGE 5 REVEAL & PHOTO -->
+    <div id="emoji-container-p5" class="flower-reveal-container" onclick="revealPage5Photos()">
+        <div class="magical-emoji-p5">☕✨</div><div class="flower-click-text">Click to reveal a beautiful memory! ❤️</div>
+    </div>
+    <div class="photo-frame-wrapper frame-p5" id="frame-page5">
+        <div class="photo-container"><img src=".trashed-1727294661-IMG-20240724-WA0086.jpg" alt="Chai Selfie"></div>
+    </div>
+
+    <!-- PAGE 6 REVEAL & VIDEO FRAME -->
+    <div id="box-container-p6" class="flower-reveal-container" onclick="revealPage6Video()">
+        <div class="magical-box-p6">✨🌌💥</div><div class="flower-click-text">Click for the Grand Finale... 💫</div>
+    </div>
+    <div class="photo-frame-wrapper frame-p6" id="frame-page6">
+        <div class="photo-container">
+            <video autoplay loop muted playsinline src="VN20260617_121924.mp4"></video>
+        </div>
+    </div>
+
+    <!-- BOTTOM CAPTIONS FOR PAGES 2,3,4,5 -->
+    <div class="bottom-caption-container" id="bottom-caption-box"><div class="bottom-caption-text caption-p2-style">"Woh dekhne mein seedhi saandhi lagti... par hai nahi! 😉"</div></div>
+    <div class="bottom-caption-container" id="bottom-caption-box-p3"><div class="bottom-caption-text caption-p3-style">"Sang rahiyo... samjhe na duniya, tu mujhko samajhiyo!"</div></div>
+    <div class="bottom-caption-container" id="bottom-caption-box-p4"><div class="bottom-caption-text caption-p4-style">"इस हरी-भरी कुदरत में, तुम सबसे हसीन नज़ारा हो...🌿✨"</div></div>
+    <div class="bottom-caption-container" id="bottom-caption-box-p5"><div class="bottom-caption-text caption-p5-style">"In a world chasing temporary trends, you are my classic comfort.☕✨❤️"</div></div>
+
+    <!-- PAGE 6 CAPTION -->
+    <div class="bottom-caption-container" id="bottom-caption-box-p6">
+        <div class="bottom-caption-text caption-p6-style">
+            वीडियो कॉल पर तुम्हारी ये प्यारी सी स्माइल ही मेरी LIFE का सबसे बेस्ट सीन है। ✨<br>
+            माना कभी-कभी मैं थोड़ी नादानियां कर देता हूँ, पर तुम्हारी ये लंबी खामोशी सच में डरा देती है। 🥺<br>
+            गुस्सा होने का पूरा हक है तुम्हें, पर इतनी भी दूरी मत बनाओ कि बात करना ही मुश्किल हो जाए। 🤫<br>
+            चाहे कितनी भी बहस हो जाए, तुमसे बात करके जो सुकून मिलता है वो और कहीं नहीं है। ❤️<br>
+            अब पुराना सब भूल जाओ, अपनी वो प्यारी सी हँसी वापस लाओ और जल्दी से मान जाओ ना! 🥰<br>
+            रिश्ते में नोक-झोक तो चलती रहेगी, पर हमेशा याद रखना... "तेरा यार हूँ मैं!" 👑
+        </div>
+    </div>
+
+    <!-- Moving Lyrics Container -->
+    <div class="lyrics-bg-container" id="lyrics-container"></div>
+
+    <!-- Controls -->
+    <div class="btn-container">
+        <button class="nav-btn" id="back-btn" onclick="showPage1()">⬅️ Back</button>
+        <button class="nav-btn" id="next-btn" onclick="showPage2()">Next Page ➡️</button>
+    </div>
+
+    <script>
+        // Lyrics configurations 
+        const page1Lyrics = [{ text: "Jaise Aankhon Ki Dibiya Mein Nindiyan...", emojis: ['👀', '💤'] }, { text: "Aur Nindiyan Mein Meetha Sa Sapna...", emojis: ['🌙', '💭'] }];
+        const page2Lyrics = [{ text: "🎵 Woh dekhne mein kaisi seedhi saandhi lagti...", emojis: ['😇', '✨'] }, { text: "🤫 Hai bolti ke woh to kuch nahi samajhti...", emojis: ['🤷‍♀️', '🤫'] }];
+        const page3Lyrics = [{ text: "🎵 Aage rahiyo, na peeche rahiyo...", emojis: ['🚶‍♀️', '🚶‍♂️'] }, { text: "🌟 Sang rahiyo... sang rahiyo...", emojis: ['👫', '💫'] }];
+        const page4Lyrics = [{ text: "🎵 ये तस्वीर है ख्वाबों के रंगों की...", emojis: ['📸', '✨'] }, { text: "🌿 यहाँ हर फूल फूल फूल ब्यूटीफुल...", emojis: ['✨', '🌻'] }];
+        const page5Lyrics = [{ text: "🎵 हां दिल दे तू बूहे सारे खोल वे... मेरे हाणियां ❤️", emojis: ['❤️', '✨'] }, { text: "🎵 मुहो ना अखियां ना बोल वे...", emojis: ['🥺', '💬'] }];
+        
+        const page6Sparks = ['✨', '💫', '🌌', '✨', '💙'];
+
+        let lyricIndex = 0;
+        let p1Interval, p2Interval, p3Interval, p4Interval, p5Interval, p6Interval;
+        let currentActivePage = 1;
+
+        function triggerFloatingSystem(dataSource) {
+            if (currentActivePage === 6) return;
+
+            const currentLine = dataSource[lyricIndex];
+            if(!currentLine) return;
+            
+            const caption = document.createElement('div');
+            caption.classList.add('floating-caption');
+            caption.style.left = (Math.random() * 8 + 2) + '%'; 
+            
+            if (currentActivePage === 1) caption.classList.add('lyric-f-p1');
+            if (currentActivePage === 2) caption.classList.add('lyric-f-p2');
+            if (currentActivePage === 3) caption.classList.add('lyric-f-p3');
+            if (currentActivePage === 4) caption.classList.add('lyric-f-p4');
+            if (currentActivePage === 5) caption.classList.add('lyric-f-p5');
+            
+            caption.innerText = currentLine.text;
+            document.getElementById('lyrics-container').appendChild(caption);
+            setTimeout(() => caption.remove(), 9000);
+
+            currentLine.emojis.forEach((emo) => {
+                const emojiDiv = document.createElement('div');
+                emojiDiv.classList.add('emoji');
+                emojiDiv.innerText = emo;
+                emojiDiv.style.left = (Math.random() * 85 + 5) + 'vw';
+                emojiDiv.style.animationDuration = (Math.random() * 2 + 4) + 's';
+                document.body.appendChild(emojiDiv);
+                setTimeout(() => emojiDiv.remove(), 5000);
+            });
+            lyricIndex = (lyricIndex + 1) % dataSource.length;
+        }
+
+        function triggerPage6Sparks() {
+            const randomSpark = page6Sparks[Math.floor(Math.random() * page6Sparks.length)];
+            const sparkDiv = document.createElement('div');
+            sparkDiv.classList.add('p6-floating-sparkle');
+            sparkDiv.innerText = randomSpark;
+            sparkDiv.style.left = (Math.random() * 90 + 5) + 'vw';
+            sparkDiv.style.animationDuration = (Math.random() * 2 + 3) + 's';
+            document.body.appendChild(sparkDiv);
+            setTimeout(() => sparkDiv.remove(), 5000);
+        }
+
+        function hideAllPages() {
+            ['music-page1', 'music-page2', 'music-page3', 'music-page4', 'music-page5', 'music-page6'].forEach(id => {
+                let audio = document.getElementById(id);
+                if(audio) audio.pause();
+            });
+            ['frame-page1', 'frame-page2', 'frame-page3', 'frame-page4', 'frame-page5', 'frame-page6'].forEach(id => document.getElementById(id).style.display = 'none');
+            ['capsule-p1', 'capsule-p2', 'capsule-p3', 'capsule-p4', 'capsule-p5', 'capsule-p6'].forEach(id => document.getElementById(id).style.display = 'none');
+            ['bottom-caption-box-p1', 'bottom-caption-box', 'bottom-caption-box-p3', 'bottom-caption-box-p4', 'bottom-caption-box-p5', 'bottom-caption-box-p6'].forEach(id => document.getElementById(id).style.display = 'none');
+            ['flower-container-p4', 'emoji-container-p5', 'box-container-p6'].forEach(id => document.getElementById(id).style.display = 'none');
+            document.getElementById('lyrics-container').innerHTML = '';
+        }
+
+        function showPage1() { currentActivePage = 1; lyricIndex = 0; hideAllPages(); document.getElementById('main-body').className = "page1-theme"; document.getElementById('main-title').innerText = "Garvita Ka Bachpan 👶✨"; document.getElementById('frame-page1').style.display = 'block'; document.getElementById('capsule-p1').style.display = 'block'; document.getElementById('back-btn').style.display = 'none'; const nextBtn = document.getElementById('next-btn'); nextBtn.style.display = 'inline-block'; nextBtn.className = "nav-btn btn-p1"; nextBtn.innerText = "Next Page ➡️"; nextBtn.onclick = showPage2; document.getElementById('music-page1').play().catch(e=>e); }
+        function playPage1Effects() { document.getElementById('music-page1').play().catch(e=>e); document.getElementById('capsule-p1').style.display = 'block'; document.getElementById('bottom-caption-box-p1').style.display = 'block'; document.getElementById('next-btn').style.display = 'inline-block'; document.getElementById('badge-p1').style.display = 'none'; if(!p1Interval) { triggerFloatingSystem(page1Lyrics); p1Interval = setInterval(() => { if(currentActivePage===1) triggerFloatingSystem(page1Lyrics); }, 4500); } }
+
+        function showPage2() { currentActivePage = 2; lyricIndex = 0; hideAllPages(); document.getElementById('main-body').className = "page2-theme"; document.getElementById('main-title').innerText = "The 'Seedhi-Sadhi' Avatar 👑"; document.getElementById('frame-page2').style.display = 'block'; const backBtn = document.getElementById('back-btn'); backBtn.style.display = 'inline-block'; backBtn.className = "nav-btn btn-p2"; backBtn.onclick = showPage1; const nextBtn = document.getElementById('next-btn'); nextBtn.style.display = 'inline-block'; nextBtn.className = "nav-btn btn-p2"; nextBtn.onclick = showPage3; }
+        function playPage2Effects() { document.getElementById('music-page2').play().catch(e=>e); document.getElementById('capsule-p2').style.display = 'block'; document.getElementById('bottom-caption-box').style.display = 'block'; document.getElementById('badge-p2').style.display = 'none'; if(!p2Interval) { triggerFloatingSystem(page2Lyrics); p2Interval = setInterval(() => { if(currentActivePage===2) triggerFloatingSystem(page2Lyrics); }, 4500); } }
+
+        function showPage3() { currentActivePage = 3; lyricIndex = 0; hideAllPages(); document.getElementById('main-body').className = "page3-theme"; document.getElementById('main-title').innerText = "The Dynamic Duo 👫✨"; document.getElementById('frame-page3').style.display = 'block'; const backBtn = document.getElementById('back-btn'); backBtn.style.display = 'inline-block'; backBtn.className = "nav-btn btn-p3"; backBtn.onclick = showPage2; const nextBtn = document.getElementById('next-btn'); nextBtn.style.display = 'inline-block'; nextBtn.className = "nav-btn btn-p3"; nextBtn.onclick = showPage4; }
+        function playPage3Effects() { document.getElementById('music-page3').play().catch(e=>e); document.getElementById('capsule-p3').style.display = 'block'; document.getElementById('bottom-caption-box-p3').style.display = 'block'; document.getElementById('badge-p3').style.display = 'none'; if(!p3Interval) { triggerFloatingSystem(page3Lyrics); p3Interval = setInterval(() => { if(currentActivePage===3) triggerFloatingSystem(page3Lyrics); }, 4500); } }
+
+        function showPage4() { currentActivePage = 4; lyricIndex = 0; hideAllPages(); document.getElementById('main-body').className = "page4-theme"; document.getElementById('main-title').innerText = "Serene Nature Vibe 🌿✨"; document.getElementById('flower-container-p4').style.display = 'flex'; const backBtn = document.getElementById('back-btn'); backBtn.style.display = 'inline-block'; backBtn.className = "nav-btn btn-p4"; backBtn.onclick = showPage3; const nextBtn = document.getElementById('next-btn'); nextBtn.style.display = 'inline-block'; nextBtn.className = "nav-btn btn-p4"; nextBtn.onclick = showPage5; }
+        function revealPage4Photo() { document.getElementById('flower-container-p4').style.display = 'none'; document.getElementById('frame-page4').style.display = 'block'; playPage4Effects(); }
+        function playPage4Effects() { document.getElementById('music-page4').play().catch(e=>e); document.getElementById('capsule-p4').style.display = 'block'; document.getElementById('bottom-caption-box-p4').style.display = 'block'; if(!p4Interval) { triggerFloatingSystem(page4Lyrics); p4Interval = setInterval(() => { if(currentActivePage===4) triggerFloatingSystem(page4Lyrics); }, 4500); } }
+
+        function showPage5() { 
+            currentActivePage = 5; lyricIndex = 0; hideAllPages(); 
+            document.getElementById('main-body').className = "page5-theme"; 
+            document.getElementById('main-title').innerText = "Cozy Conversations & Coffee ❤️"; 
+            document.getElementById('emoji-container-p5').style.display = 'flex'; 
+            const backBtn = document.getElementById('back-btn');
+            backBtn.style.display = 'inline-block'; backBtn.className = "nav-btn btn-p5"; backBtn.onclick = showPage4;
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.style.display = 'inline-block'; nextBtn.className = "nav-btn btn-p5"; nextBtn.onclick = showPage6;
+        }
+        function revealPage5Photos() { document.getElementById('emoji-container-p5').style.display = 'none'; document.getElementById('frame-page5').style.display = 'block'; playPage5Effects(); }
+        function playPage5Effects() { document.getElementById('music-page5').play().catch(e=>e); document.getElementById('capsule-p5').style.display = 'block'; document.getElementById('bottom-caption-box-p5').style.display = 'block'; if(!p5Interval) { triggerFloatingSystem(page5Lyrics); p5Interval = setInterval(() => { if(currentActivePage===5) triggerFloatingSystem(page5Lyrics); }, 4500); } }
+
+        function showPage6() { 
+            currentActivePage = 6; hideAllPages(); 
+            document.getElementById('main-body').className = "page6-theme"; 
+            document.getElementById('main-title').innerText = "The Grand Finale 💥👑"; 
+            document.getElementById('box-container-p6').style.display = 'flex'; 
+            const backBtn = document.getElementById('back-btn');
+            backBtn.style.display = 'inline-block'; backBtn.className = "nav-btn btn-p6"; backBtn.onclick = showPage5;
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.style.display = 'none';
+        }
+        function revealPage6Video() { document.getElementById('box-container-p6').style.display = 'none'; document.getElementById('frame-page6').style.display = 'block'; playPage6Effects(); }
+        function playPage6Effects() { 
+            document.getElementById('music-page6').play().catch(e=>e); 
+            document.getElementById('capsule-p6').style.display = 'block'; 
+            document.getElementById('bottom-caption-box-p6').style.display = 'block'; 
+            if(!p6Interval) { triggerPage6Sparks(); p6Interval = setInterval(() => { if(currentActivePage===6) triggerPage6Sparks(); }, 800); } 
+        }
+
+        // Initialize Page 1 on load
+        window.onload = function() {
+            showPage1();
+        };
+    </script>
+</body>
+</html>
